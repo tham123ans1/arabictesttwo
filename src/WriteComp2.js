@@ -6,6 +6,8 @@ import Svg, {Path} from 'react-native-svg';
 
 var startOfTap = true;
 
+//this is first commit
+
 const WriteComp2 = ({ id, updateComponentPositionKey }) => {
 
     const [path, setPath] = useState('');
