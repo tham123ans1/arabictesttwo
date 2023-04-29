@@ -5,6 +5,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Svg, {Path} from 'react-native-svg';
 
 var startOfTap = true;
+var test = 1;
 
 //this is first commit
 //this is second commit
