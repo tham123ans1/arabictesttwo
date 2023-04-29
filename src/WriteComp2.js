@@ -7,6 +7,7 @@ import Svg, {Path} from 'react-native-svg';
 var startOfTap = true;
 
 //this is first commit
+//this is second commit
 
 const WriteComp2 = ({ id, updateComponentPositionKey }) => {
 
