@@ -2,7 +2,7 @@ import React, {useRef, useState, useEffect, useCallback} from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, PanResponder, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import Svg, {Path} from 'react-native-svg-web';
+import Svg, {G, Path} from 'react-native-svg-web';
 
 var startOfTap = true;
 var test = 1;
@@ -95,8 +95,8 @@ const WriteComp2 = ({ id, updateComponentPositionKey }) => {
             console.log('Tap event relative coordinates:', relativeX, relativeY);
 
             const currentContainerWidth = containerWidthRef.current; // Use the ref value
-            //const xd = currentContainerWidth - touch.locationX; 
-            const xd = touch.locationX; 
+            const xd = currentContainerWidth - touch.locationX; 
+            //const xd = touch.locationX; 
             const yd = touch.locationY;
 
             const x = Math.round(xd);
@@ -123,8 +123,8 @@ const WriteComp2 = ({ id, updateComponentPositionKey }) => {
             const currentContainerWidth = containerWidthRef.current; // Use the ref value
             const currentContainerHeight = containerHeightRef.current; // Use the ref value
       
-            const xd = touch.locationX; //x coordinate start from right side for arabic
-            //const xd = currentContainerWidth - touch.locationX; //x coordinate start from right side for arabic
+            //const xd = touch.locationX; //x coordinate start from right side for arabic
+            const xd = currentContainerWidth - touch.locationX; //x coordinate start from right side for arabic
 
             //const xd = touch.locationX; //x coordinate start from right side for arabic
             
@@ -288,7 +288,11 @@ async function saveData(key, value) {
           {/*transform={`scale(-1, 1) translate(-${containerWidthRef.current}, 0)`}*//*this  line works for android*/ }
           <View style={styles.drawingArea} {...panResponder.current?.panHandlers} >
             <Svg width={'100%'} height={'100%'} >
-              <Path d={path} fill="none" stroke="black" strokeWidth="7" />
+              <G transform={`scale(-1,1)`}>
+                <G transform={`translate(-${containerWidthRef.current},0)`}>
+                  <Path d={path} fill="none" stroke="black" strokeWidth="7" />
+                </G>
+              </G>
             </Svg>
           </View>
 
