@@ -2,7 +2,8 @@ import React, {useRef, useState, useEffect, useCallback} from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, PanResponder, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import Svg, {G, Path} from 'react-native-svg';
+//import Svg, {G, Path} from 'react-native-svg';
+import {Svg, G, Path} from './SvgComponents';
 
 var startOfTap = true;
 var test = 1;
