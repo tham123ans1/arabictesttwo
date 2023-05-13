@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Alert, ScrollView, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Alert, ScrollView, Dimensions, Platform } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const TopSaveLoadCtrl = () => {
@@ -16,10 +16,24 @@ const TopSaveLoadCtrl = () => {
             keyCollections += key + ',';
           }
     
-          Alert.alert('Storage Size', `The total size of AsyncStorage is ${totalSize} characters. And key collections are ${keyCollections}`);
+          //Alert.alert('Storage Size', `The total size of AsyncStorage is ${totalSize} characters. And key collections are ${keyCollections}`);
+          const message = `The total size of AsyncStorage is ${totalSize} characters. And key collections are ${keyCollections}`;
+          if (Platform.OS === 'web') {
+            window.alert(message);
+          } else {
+            Alert.alert('Storage Size', message);
+          }
+          
+
         } catch (error) {
           console.error('Error while checking storage size:', error);
-          Alert.alert('Error', 'Failed to check the storage size');
+          //Alert.alert('Error', 'Failed to check the storage size');
+          if (Platform.OS === 'web') {
+            window.alert('Failed to check the storage size');
+          } else {
+            Alert.alert('Error', 'Failed to check the storage size');
+          }
+
         }
       };
 
