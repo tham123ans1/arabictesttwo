@@ -1,2 +1,3 @@
-import { Svg, Path } from 'react-native-svg-web';
-export { Svg, Path /* any other components you need */ };
+import Svg, {G, Path} from 'react-native-svg-web';
+
+export {Svg, G, Path};
